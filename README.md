@@ -20,7 +20,7 @@ RestockIQ is a web application that live tracks restaurant stock levels, predict
 **Planned features:**
 - Live inventory dashboard showing current stock levels
 - Staff can quickly log how much of an item has been used
-- Predictions for when stock will run out based on day-of-week usage patterns
+- Predictions use a 3 day forward average to avoid unnecessary orders being triggered by a single day's usage pattern
 - Automated low stock alerts so managers can order before running out
 
 ## Tech Stack
@@ -35,6 +35,9 @@ RestockIQ is a web application that live tracks restaurant stock levels, predict
 | CI/CD | GitHub Actions |
 | DNS | AWS Route 53 |
 | Alerts | AWS SNS |
+
+##Future Improvements
+Seasonal demand forecasting — account for monthly and yearly patterns once sufficient historical data exists. Would require minimum 12 months of usage data to be statistically meaningful.
 
 ---
 

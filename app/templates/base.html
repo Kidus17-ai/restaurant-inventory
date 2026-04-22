@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestockIQ — Restaurant Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0f1117',
+                            800: '#1a1d27',
+                            700: '#252836',
+                            600: '#2f3347',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-900 text-gray-100 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-dark-800 border-b border-gray-700 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🍽️</span>
+                <span class="text-xl font-bold text-white">RestockIQ</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="/" class="text-gray-300 hover:text-white transition">Dashboard</a>
+                <a href="/add-item" class="text-gray-300 hover:text-white transition">Add Item</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="max-w-6xl mx-auto px-6 mt-4">
+                {% for category, message in messages %}
+                    <div class="px-4 py-3 rounded-lg mb-2
+                        {% if category == 'success' %} bg-green-900 border border-green-700 text-green-300
+                        {% else %} bg-red-900 border border-red-700 text-red-300 {% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main content -->
+    <main class="max-w-6xl mx-auto px-6 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
