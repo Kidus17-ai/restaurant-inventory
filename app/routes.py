@@ -59,6 +59,10 @@ def log_usage(item_id):
 @main.route('/delete-item/<int:item_id>')
 def delete_item(item_id):
     item = Item.query.get_or_404(item_id)
+    
+    # Delete related stock logs first before deleting item
+    StockLog.query.filter_by(item_id=item.id).delete()
+    
     db.session.delete(item)
     db.session.commit()
     flash(f'{item.name} deleted', 'success')
