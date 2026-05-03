@@ -10,6 +10,7 @@ resource "aws_cloudfront_distribution" "main" {
   is_ipv6_enabled     = true
   default_root_object = "/"
   price_class         = "PriceClass_100"
+  aliases             = [var.domain_name, "www.${var.domain_name}"]
 
   origin {
     domain_name = var.alb_dns_name
@@ -31,6 +32,7 @@ resource "aws_cloudfront_distribution" "main" {
 
     forwarded_values {
       query_string = true
+      headers      = ["Host", "Origin", "Authorization"]
       cookies {
         forward = "all"
       }
@@ -48,8 +50,10 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
-  }
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
+}
 
   tags = merge(var.common_tags, {
     Name = "${var.domain_name}-cloudfront"

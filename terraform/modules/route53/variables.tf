@@ -17,3 +17,8 @@ variable "common_tags" {
   description = "Common tags to apply to all resources"
   type        = map(string)
 }
+
+variable "acm_certificate_arn" {
+  description = "ACM certificate ARN for CloudFront"
+  type        = string
+}

@@ -28,7 +28,7 @@ locals {
     var.db_username,
     data.aws_ssm_parameter.db_password.value,
     module.rds.db_endpoint,
-    var.db_name
+    "restockiq_production"
   )
 
   # ECS task config looked up from map variable
@@ -86,4 +86,5 @@ module "route53" {
   alb_dns_name = module.ecs.alb_dns_name
   alb_zone_id  = module.ecs.alb_zone_id
   common_tags  = local.common_tags
+  acm_certificate_arn = "arn:aws:acm:us-east-1:810772959098:certificate/dcc84266-96f1-4815-83f4-0ec89d2a5cab"
 }
