@@ -300,5 +300,5 @@ Rather than full automatic stock deduction from sales — which would be less ac
 ---
 
 ## Author
-Kidus Ermiyas Tesfaye**
-
+**Kidus Ermiyas Tesfaye**
+[LinkedIn](www.linkedin.com/in/kidus-tesfaye-b06224257) | [GitHub](https://github.com/Kidus17-ai) | kidusermiyas6@gmail.com
